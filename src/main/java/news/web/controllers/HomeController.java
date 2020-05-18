@@ -11,17 +11,17 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView getIndex(HttpServletRequest request){
-        System.out.println("User IP"+request.getRemoteAddr());
+        System.out.println("User IP: "+request.getRemoteAddr());
         return new ModelAndView("index");
     }
     @GetMapping("/news")
     public ModelAndView getNews(HttpServletRequest request){
-        System.out.println("User IP"+request.getRemoteAddr());
+        System.out.println("User IP: "+request.getRemoteAddr());
         return new ModelAndView("news");
     }
     @GetMapping("/contact")
     public ModelAndView getContact(HttpServletRequest request){
-        System.out.println("User IP"+request.getRemoteAddr());
+        System.out.println("User IP: "+request.getRemoteAddr());
         return new ModelAndView("contact");
     }
 }
