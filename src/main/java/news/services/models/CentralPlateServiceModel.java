@@ -1,6 +1,7 @@
-package news.web.models;
+package news.services.models;
 
-public class NewsModel {
+public class CentralPlateServiceModel {
+
     private String imgUrl;
     private String category;
     private String title;
@@ -10,6 +11,10 @@ public class NewsModel {
     public String getImgUrl() {
         return imgUrl;
     }
+
+    /**
+     * Image must be size 1000x840 for perfect view.
+     */
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;

@@ -109,18 +109,21 @@
         <div class="row m-rl--1">
 
 
+            <!-- News is view object for central plate -->
+
             <!-- Central plate 1000x840 -->
-            <th:block th:include="~{fragments/desktop/plates/central-plate-1000x840 :: putNews(${news})}"/>
+            <th:block th:include="~{fragments/desktop/plates/central-plate-1000x840 :: putNews(${topNews})}"/>
+
             <!-- Central plate 1000x840 -->
 
 
             <!-- Right plate 1000x466 -->
-            <th:block th:include="~{fragments/desktop/plates/right-plate-1000x466}"/>
+            <th:block th:include="~{fragments/desktop/plates/right-plate-1000x466 ::putNews(${popularNews.get(0)})}"/>
             <!-- Right plate 1000x466 -->
 
             <!-- Right plate 1000x743 -->
-            <th:block th:include="~{fragments/desktop/plates/right-plate-1000x743}"/>
-            <th:block th:include="~{fragments/desktop/plates/right-plate-1000x743}"/>
+            <th:block th:include="~{fragments/desktop/plates/right-plate-1000x743 ::putNews(${popularNews.get(1)})}"/>
+            <th:block th:include="~{fragments/desktop/plates/right-plate-1000x743 ::putNews(${popularNews.get(2)})}"/>
             <!-- Right plate 1000x743 -->
         </div>
     </div>

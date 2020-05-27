@@ -1,7 +1,6 @@
 <th:block th:fragment="putNews(news)">
     <div class="col-md-6 p-rl-1 p-b-2">
-        <div class="bg-img1 size-a-3 how1 pos-relative"
-             th:style="'background:url(' + @{${news.getImgUrl()}} + ')'">
+        <div class="bg-img1 size-a-3 how1 pos-relative" th:style="'background-image:url(' + @{${news.getImgUrl()}} + ')'">
             <a href="{newsId}" class="dis-block how1-child1 trans-03"></a>
 
             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
@@ -20,4 +19,5 @@
             </div>
         </div>
     </div>
+
 </th:block>

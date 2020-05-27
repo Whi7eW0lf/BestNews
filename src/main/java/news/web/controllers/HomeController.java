@@ -1,31 +1,43 @@
 package news.web.controllers;
 
-import news.web.models.NewsModel;
+import news.services.interfaces.NewsService;
+import news.web.models.CentralPlateView;
+import news.web.models.RightPlateView;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
 
+    private final ModelMapper modelMapper;
+    private final NewsService newsService;
+
+    @Autowired
+    public HomeController(ModelMapper modelMapper, NewsService newsService) {
+        this.modelMapper = modelMapper;
+        this.newsService = newsService;
+    }
+
     @GetMapping("/")
     public ModelAndView getIndex(HttpServletRequest request, ModelAndView modelAndView){
-        NewsModel news = new NewsModel();
 
+        CentralPlateView topNews = this.modelMapper.map(this.newsService.getTopNews(), CentralPlateView.class);
 
-        news.setImgUrl("/images/test-image.jpg");
-        news.setAuthor("Salih");
-        news.setCategory("Test Category");
-        news.setDate("27.05.2020");
-        news.setTitle("News Model Test");
-
-
+        List<RightPlateView> popularNews = this.newsService.getPopularNews()
+                .stream()
+                .map(n -> this.modelMapper.map(n, RightPlateView.class))
+                .collect(Collectors.toList());
 
         modelAndView.setViewName("index");
-        modelAndView.addObject("news",news);
+        modelAndView.addObject("topNews",topNews);
+        modelAndView.addObject("popularNews",popularNews);
 
         System.out.println("User IP: "+request.getRemoteAddr());
         return modelAndView;
