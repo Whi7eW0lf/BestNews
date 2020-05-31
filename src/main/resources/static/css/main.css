@@ -974,7 +974,9 @@ body {padding-right: 0px !important;}
   overflow-y: auto !important;
 }
 .modal-open {overflow-y: scroll;}
-
+#video{
+  margin-top: -8px;
+}
 /* ------------------------------------ */
 .modal-backdrop {
   background-color: transparent;

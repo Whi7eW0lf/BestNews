@@ -68,7 +68,7 @@ public class NewsRepositoryImpl implements NewsRepository {
         topNews.setAuthor("Salih");
         topNews.setCategory("TestServiceCategory");
         topNews.setTitle("Testing news service");
-        topNews.setDate("28.05.2020");
+        topNews.setDate("30.05.2020");
 
         return topNews;
     }
