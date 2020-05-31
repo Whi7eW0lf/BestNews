@@ -13,7 +13,7 @@
 <header>
     <!-- Header desktop -->
     <div class="container-menu-desktop">
-        <th:block th:include="~{fragments/desktop/desktop-header}"/>
+        <th:block th:include="~{fragments/desktop/headers/desktop-header}"/>
 
         <!-- Header Mobile -->
         <th:block th:include="~{fragments/mobile/headers/mobile-header}"/>
@@ -84,8 +84,7 @@
 					Trending Now:
 				</span>
 
-            <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown"
-                  data-out="fadeOutDown">
+            <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
 					<span class="dis-inline-block slide100-txt-item animated visible-false">
 						Test 1
 					</span>
@@ -546,64 +545,21 @@
 
             <div class="col-md-10 col-lg-4">
                 <div class="p-l-10 p-rl-0-sr991 p-b-20">
-                    <!--  -->
                     <div>
                         <div class="how2 how2-cl4 flex-s-c">
-                            <h3 class="f1-m-2 cl3 tab01-title">
-                                Most Popular
-                            </h3>
+
+                            <h3 class="f1-m-2 cl3 tab01-title">Most Popular</h3>
+
                         </div>
 
                         <ul class="p-t-35">
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    1
-                                </div>
 
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                </a>
-                            </li>
+                            <th:block th:each="oneNews,id:${news1}">
 
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    2
-                                </div>
+                                <th:block th:include="fragments/desktop/plates/most-popular-news :: putNumberAndTitle(${id.index+1},${oneNews.getText()})"/>
 
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Proin velit consectetur non neque
-                                </a>
-                            </li>
+                            </th:block>
 
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    3
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Nunc vestibulum, enim vitae condimentum volutpat lobortis ante
-                                </a>
-                            </li>
-
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    4
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Proin velit justo consectetur non neque elementum
-                                </a>
-                            </li>
-
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0">
-                                    5
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Proin velit consectetur non neque
-                                </a>
-                            </li>
                         </ul>
                     </div>
 
@@ -796,36 +752,15 @@
 
                     <div>
                         <p class="f1-s-1 cl11 p-b-16">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor magna eget elit
-                            efficitur, at accumsan sem placerat. Nulla tellus libero, mattis nec molestie at, facilisis
-                            ut turpis. Vestibulum dolor metus, tincidunt eget odio
+                            Best news!!!
                         </p>
 
                         <p class="f1-s-1 cl11 p-b-16">
                             Any questions? Call us on (+1) 96 716 6879
                         </p>
 
-                        <div class="p-t-15">
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-facebook-f"></span>
-                            </a>
+                        <th:block th:include="fragments/buttons/social-network-footer"/>
 
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-twitter"></span>
-                            </a>
-
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-pinterest-p"></span>
-                            </a>
-
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-vimeo-v"></span>
-                            </a>
-
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-youtube"></span>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
@@ -861,35 +796,19 @@
                     </div>
 
                     <ul class="m-t--12">
-                        <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                Fashion (22)
-                            </a>
-                        </li>
 
-                        <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                Technology (29)
-                            </a>
-                        </li>
+                        <th:block th:include="fragments/desktop/tags/category"/>
 
-                        <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                Street Style (15)
-                            </a>
-                        </li>
+                        <th:block th:include="fragments/desktop/tags/category"/>
 
-                        <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                Life Style (28)
-                            </a>
-                        </li>
+                        <th:block th:include="fragments/desktop/tags/category"/>
 
-                        <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                DIY & Crafts (16)
-                            </a>
-                        </li>
+                        <th:block th:include="fragments/desktop/tags/category"/>
+
+                        <th:block th:include="fragments/desktop/tags/category"/>
+
+                        <th:block th:include="fragments/desktop/tags/category"/>
+
                     </ul>
                 </div>
             </div>
@@ -916,27 +835,10 @@
 		</span>
 </div>
 
-<!-- Modal Video 01-->
-<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document" data-dismiss="modal">
-        <div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
-
-        <div class="wrap-video-mo-01">
-            <div class="video-mo-01">
-                <iframe src="https://www.youtube.com/embed/wJnBTPUQS5A?rel=0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
 <script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
 <script src="js/main.js"></script>
 
 </body>
