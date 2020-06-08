@@ -1,4 +1,4 @@
-package news.data.models;
+package news.models;
 
 import org.hibernate.annotations.GenericGenerator;
 

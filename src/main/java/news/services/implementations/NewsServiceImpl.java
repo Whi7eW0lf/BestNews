@@ -1,32 +1,38 @@
 package news.services.implementations;
 
-import news.repositories.interfaces.NewsRepository;
+import news.models.News;
+import news.repositories.NewsRepository;
 import news.services.interfaces.NewsService;
 import news.services.models.CentralPlateServiceModel;
-import news.services.models.RightPlateServiceModel;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public NewsServiceImpl(NewsRepository newsRepository) {
+    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper) {
         this.newsRepository = newsRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public CentralPlateServiceModel getTopNews() {
-        return this.newsRepository.findTopNews();
-    }
+    public CentralPlateServiceModel getNews(){
+        News news = this.newsRepository.findAll().get(0);
 
-    @Override
-    public List<RightPlateServiceModel> getPopularNews() {
-        return this.newsRepository.findPopularNews();
-    }
+        CentralPlateServiceModel model =  new CentralPlateServiceModel();
 
+        model.setTitle(news.getTitle());
+        model.setDate(news.getDate().toString());
+        model.setCategory(news.getCategory().iterator().next().getType());
+        model.setAuthor(news.getUser().getFirstName()+" "+news.getUser().getLastName());
+        model.setImgUrl(news.getImageLink());
+
+        return model;
+    }
 }

@@ -2,14 +2,14 @@ package news.services.models;
 
 public class CentralPlateServiceModel {
 
-    private String imgUrl;
+    private String imageLink;
     private String category;
     private String title;
     private String Author;
     private String date;
 
     public String getImgUrl() {
-        return imgUrl;
+        return imageLink;
     }
 
     /**
@@ -17,7 +17,7 @@ public class CentralPlateServiceModel {
      */
 
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+        this.imageLink = imgUrl;
     }
 
     public String getCategory() {

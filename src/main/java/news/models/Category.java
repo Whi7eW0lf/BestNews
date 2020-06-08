@@ -1,4 +1,4 @@
-package news.data.models;
+package news.models;
 
 
 import javax.persistence.Column;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Category extends BaseEntity{
     private String type;
 
-    @Column
+    @Column(name = "type")
     public String getType() {
         return type;
     }
