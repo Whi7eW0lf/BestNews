@@ -1811,6 +1811,9 @@ a.breadcrumb-item:hover {
   .parallax100 {background-attachment: inherit;}
 }
 
+#trending{
+  color: #666
+}
 /*------------------------------------------------------------------
 [ Wrap Picture ]*/
 .wrap-pic-s, .wrap-pic-max-s,

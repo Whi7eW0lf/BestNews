@@ -1,4 +1,4 @@
-package news.tests;
+package news.init;
 
 import news.models.*;
 import news.repositories.CategoryRepository;
@@ -6,26 +6,26 @@ import news.repositories.NewsRepository;
 import news.repositories.TagRepository;
 import news.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Set;
 
 @Component
-public class AddDatabaseInformation {
+public class DataInitializer implements CommandLineRunner {
 
-    private final UserRepository userRepository;
-    private final TagRepository tagRepository;
-    private final CategoryRepository categoryRepository;
-    private final NewsRepository newsRepository;
+    private final UserRepository userRepository; //TODO: Service
+    private final TagRepository tagRepository; //TODO: Service
+    private final CategoryRepository categoryRepository; //TODO: Service
+    private final NewsRepository newsRepository; //TODO: Service
     private final User user;
     private final Tag tag;
     private final Category category;
     private final News news;
 
     @Autowired
-    public AddDatabaseInformation(UserRepository userRepository, TagRepository tagRepository, CategoryRepository categoryRepository, NewsRepository newsRepository) {
+    public DataInitializer(UserRepository userRepository, TagRepository tagRepository, CategoryRepository categoryRepository, NewsRepository newsRepository) {
         this.userRepository = userRepository;
         this.tagRepository = tagRepository;
         this.categoryRepository = categoryRepository;
@@ -66,5 +66,20 @@ public class AddDatabaseInformation {
         this.user.setIp("11.11.11.11");
         this.user.setRole(Role.ADMINISTRATOR);
         this.userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        if (this.categoryRepository.count()<1
+                &&this.newsRepository.count()<1
+                &&this.tagRepository.count()<1
+                &&this.userRepository.count()<1){
+
+            this.addUser();
+            this.addCategory();
+            this.addNews();
+            this.addTag();
+        }
     }
 }

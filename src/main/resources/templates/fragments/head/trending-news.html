@@ -1,0 +1,9 @@
+<th:block th:fragment="trendingNews(news)">
+
+    <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
+
+					<a href="/" class="dis-inline-block slide100-txt-item animated visible-false" id="trending"
+                       th:each="trendingNews : ${news}"
+                       th:text="${trendingNews.getTitle()}">News Title</a>
+				</span>
+</th:block>

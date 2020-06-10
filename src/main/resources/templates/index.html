@@ -80,23 +80,8 @@
 <div class="container">
     <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
         <div class="f2-s-1 p-r-30 size-w-0 m-tb-6 flex-wr-s-c">
-				<span class="text-uppercase cl2 p-r-8">
-					Trending Now:
-				</span>
-
-            <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
-					<span class="dis-inline-block slide100-txt-item animated visible-false">
-						Test 1
-					</span>
-
-					<span class="dis-inline-block slide100-txt-item animated visible-false">
-						News 2
-					</span>
-
-					<span class="dis-inline-block slide100-txt-item animated visible-false">
-						Span 3
-					</span>
-				</span>
+            <span class="text-uppercase cl2 p-r-8">Trending Now:</span>
+            <th:block th:include="~{fragments/head/trending-news :: trendingNews(${trendingNews})}"/>
         </div>
         <th:block th:include="~{fragments/search/search-headline}"/>
     </div>
@@ -117,12 +102,12 @@
 
 
             <!-- Right plate 1000x466 -->
-<!--            <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${popularNews.get(0)})}"/>-->
+            <!--            <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${popularNews.get(0)})}"/>-->
             <!-- Right plate 1000x466 -->
 
             <!-- Right plate 1000x743 -->
-<!--            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${popularNews.get(1)})}"/>-->
-<!--            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${popularNews.get(2)})}"/>-->
+            <!--            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${popularNews.get(1)})}"/>-->
+            <!--            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${popularNews.get(2)})}"/>-->
             <!-- Right plate 1000x743 -->
         </div>
     </div>
@@ -554,11 +539,11 @@
 
                         <ul class="p-t-35">
 
-<!--                            <th:block th:each="oneNews,id:${}">-->
+                            <!--                            <th:block th:each="oneNews,id:${}">-->
 
-<!--                                <th:block th:include="fragments/plates/most-popular-news :: putNumberAndTitle(${id.index+1},${oneNews.getText()})"/>-->
+                            <!--                                <th:block th:include="fragments/plates/most-popular-news :: putNumberAndTitle(${id.index+1},${oneNews.getText()})"/>-->
 
-<!--                            </th:block>-->
+                            <!--                            </th:block>-->
 
                         </ul>
                     </div>

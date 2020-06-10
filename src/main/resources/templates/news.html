@@ -79,24 +79,10 @@
 <div class="container">
     <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
         <div class="f2-s-1 p-r-30 size-w-0 m-tb-6 flex-wr-s-c">
-				<span class="text-uppercase cl2 p-r-8">
-					Trending Now:
-				</span>
+				<span class="text-uppercase cl2 p-r-8">Trending Now:</span>
 
-            <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown"
-                  data-out="fadeOutDown">
-					<span class="dis-inline-block slide100-txt-item animated visible-false">
-						Test 1
-					</span>
+            <th:block th:include="~{fragments/head/trending-news :: trendingNews(${trendingNews})}"/>
 
-					<span class="dis-inline-block slide100-txt-item animated visible-false">
-						News 2
-					</span>
-
-					<span class="dis-inline-block slide100-txt-item animated visible-false">
-						Span 3
-					</span>
-				</span>
         </div>
         <th:block th:include="~{fragments/search/search-headline}"/>
     </div>
@@ -134,36 +120,35 @@
                             <img src="images/blog-list-01.jpg" alt="IMG">
                         </div>
 
-                        <th:block th:each="text1:${text.getText()}">
-                            <p class="f1-s-11 cl6 p-b-25" th:text="${text1}">T</p>
-                        </th:block>
+<!--                        <th:block th:each="text1:${text.getText()}">-->
+<!--                            <p class="f1-s-11 cl6 p-b-25" th:text="${text1}">T</p>-->
+<!--                        </th:block>-->
 
-<!--                        <p class="f1-s-11 cl6 p-b-25">-->
-<!--                            Curabitur volutpat bibendum molestie. Vestibulum ornare gravida semper. Aliquam a dui-->
-<!--                            suscipit, fringilla metus id, maximus leo. Vivamus sapien arcu, mollis eu pharetra vitae,-->
-<!--                            condimentum in orci. Integer eu sodales dolor. Maecenas elementum arcu eu convallis rhoncus.-->
-<!--                            Donec tortor sapien, euismod a faucibus eget, porttitor quis libero.-->
-<!--                        </p>-->
+                                                <p class="f1-s-11 cl6 p-b-25">
+                                                    Curabitur volutpat bibendum molestie. Vestibulum ornare gravida semper. Aliquam a dui
+                                                    suscipit, fringilla metus id, maximus leo. Vivamus sapien arcu, mollis eu pharetra vitae,
+                                                    condimentum in orci. Integer eu sodales dolor. Maecenas elementum arcu eu convallis rhoncus.
+                                                    Donec tortor sapien, euismod a faucibus eget, porttitor quis libero.
+                                                </p>
 
-<!--                        <p class="f1-s-11 cl6 p-b-25">-->
-<!--                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet est vel orci luctus-->
-<!--                            sollicitudin. Duis eleifend vestibulum justo, varius semper lacus condimentum dictum. Donec-->
-<!--                            pulvinar a magna ut malesuada. In posuere felis diam, vel sodales metus accumsan in. Duis-->
-<!--                            viverra dui eu pharetra pellentesque. Donec a eros leo. Quisque sed ligula vitae lorem-->
-<!--                            efficitur faucibus. Praesent sit amet imperdiet ante. Nulla id tellus auctor, dictum libero-->
-<!--                            a, malesuada nisi. Nulla in porta nibh, id vestibulum ipsum. Praesent dapibus tempus erat-->
-<!--                            quis aliquet. Donec ac purus id sapien condimentum feugiat.-->
-<!--                        </p>-->
+                                                <p class="f1-s-11 cl6 p-b-25">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet est vel orci luctus
+                                                    sollicitudin. Duis eleifend vestibulum justo, varius semper lacus condimentum dictum. Donec
+                                                    pulvinar a magna ut malesuada. In posuere felis diam, vel sodales metus accumsan in. Duis
+                                                    viverra dui eu pharetra pellentesque. Donec a eros leo. Quisque sed ligula vitae lorem
+                                                    efficitur faucibus. Praesent sit amet imperdiet ante. Nulla id tellus auctor, dictum libero
+                                                    a, malesuada nisi. Nulla in porta nibh, id vestibulum ipsum. Praesent dapibus tempus erat
+                                                    quis aliquet. Donec ac purus id sapien condimentum feugiat.
+                                                </p>
 
-<!--                        <p class="f1-s-11 cl6 p-b-25">-->
-<!--                            Praesent vel mi bibendum, finibus leo ac, condimentum arcu. Pellentesque sem ex, tristique-->
-<!--                            sit amet suscipit in, mattis imperdiet enim. Integer tempus justo nec velit fringilla, eget-->
-<!--                            eleifend neque blandit. Sed tempor magna sed congue auctor. Mauris eu turpis eget tortor-->
-<!--                            ultricies elementum. Phasellus vel placerat orci, a venenatis justo. Phasellus faucibus-->
-<!--                            venenatis nisl vitae vestibulum. Praesent id nibh arcu. Vivamus sagittis accumsan felis,-->
-<!--                            quis vulputate-->
-<!--                        </p>-->
-
+                                                <p class="f1-s-11 cl6 p-b-25">
+                                                    Praesent vel mi bibendum, finibus leo ac, condimentum arcu. Pellentesque sem ex, tristique
+                                                    sit amet suscipit in, mattis imperdiet enim. Integer tempus justo nec velit fringilla, eget
+                                                    eleifend neque blandit. Sed tempor magna sed congue auctor. Mauris eu turpis eget tortor
+                                                    ultricies elementum. Phasellus vel placerat orci, a venenatis justo. Phasellus faucibus
+                                                    venenatis nisl vitae vestibulum. Praesent id nibh arcu. Vivamus sagittis accumsan felis,
+                                                    quis vulputate
+                                                </p>
 
 
                         <!-- Tag -->
