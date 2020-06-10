@@ -10,7 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.Collections;
+import java.util.Random;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -19,10 +20,10 @@ public class DataInitializer implements CommandLineRunner {
     private final TagRepository tagRepository; //TODO: Service
     private final CategoryRepository categoryRepository; //TODO: Service
     private final NewsRepository newsRepository; //TODO: Service
-    private final User user;
-    private final Tag tag;
-    private final Category category;
-    private final News news;
+    private User user;
+    private Tag tag;
+    private Category category;
+    private News news;
 
     @Autowired
     public DataInitializer(UserRepository userRepository, TagRepository tagRepository, CategoryRepository categoryRepository, NewsRepository newsRepository) {
@@ -37,13 +38,15 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     public void addNews(){
-        this.news.setCategory(Set.of(this.category));
-        this.news.setImageLink("/images/test-image-1000x466.jpg");
+        this.news.setImageUrl("/images/test-image-1000x466.jpg");
         this.news.setDate(LocalDateTime.now());
+        this.news.setCategory(this.category);
         this.news.setUser(this.user);
-        this.news.setViews(1);
+        Random random = new Random();
+        this.news.setViews(Math.abs(random.nextInt()));
         this.news.setTextNews("NULL");
         this.news.setTitle("Test database text");
+        this.news.setTags(Collections.singletonList(this.tag));
         this.newsRepository.saveAndFlush(this.news);
     }
 
@@ -75,11 +78,17 @@ public class DataInitializer implements CommandLineRunner {
                 &&this.newsRepository.count()<1
                 &&this.tagRepository.count()<1
                 &&this.userRepository.count()<1){
+            for (int i = 0; i < 10; i++) {
+                this.user = new User();
+                this.tag = new Tag();
+                this.category = new Category();
+                this.news = new News();
 
-            this.addUser();
-            this.addCategory();
-            this.addNews();
-            this.addTag();
+                this.addUser();
+                this.addCategory();
+                this.addTag();
+                this.addNews();
+            }
         }
     }
 }

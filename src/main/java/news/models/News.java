@@ -3,7 +3,6 @@ package news.models;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Table(name = "news")
 @Entity
@@ -11,34 +10,26 @@ public class News extends BaseEntity{
 
     private User user;
     private LocalDateTime date;
-    private List<Comment> comments;
     private Integer views;
     private String title;
     private String textNews;
-    private String imageLink;
-    private Set<Tag> tags;
-    private Set<Category> category;
+    private String imageUrl;
+    private List<Tag> tags;
+    private Category category;
 
-    @OneToMany
-    @JoinColumn(name = "category_id")
-    public Set<Category> getCategory() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    public Category getCategory() {
         return category;
     }
 
-    @OneToMany
-    @JoinColumn(name = "tag_id")
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
-    @OneToMany
-    @JoinColumn(name = "comment_id")
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setCategory(Set<Category> category) {
+    public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @OneToMany
+    @JoinColumn(name = "news_id")
+    public List<Tag> getTags() {
+        return tags;
     }
 
     @ManyToOne
@@ -56,11 +47,6 @@ public class News extends BaseEntity{
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-
-    public void setComments(List<Comment> comment) {
-        this.comments = comment;
     }
 
     @Column(name = "views")
@@ -91,16 +77,16 @@ public class News extends BaseEntity{
     }
 
     @Column(name = "image_url")
-    public String getImageLink() {
-        return imageLink;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 
-    public void setTags(Set<Tag> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 }

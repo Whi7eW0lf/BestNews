@@ -1,15 +1,22 @@
 package news.services.implementations;
 
+import news.models.Category;
 import news.models.News;
 import news.repositories.NewsRepository;
 import news.services.interfaces.NewsService;
 import news.services.models.CentralPlateServiceModel;
+import news.services.models.NewsModel;
+import news.services.models.SmallPlateCategoryServiceModel;
 import news.services.models.TrendingNowModel;
-import org.modelmapper.ModelMapper;
+import news.util.TextEditor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,40 +24,48 @@ import java.util.List;
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
-    private final ModelMapper modelMapper;
 
     private static final LocalDateTime NOW = LocalDateTime.now();
     private static final LocalDateTime MIDNIGHT = NOW.toLocalDate().atStartOfDay();
+    private static final LocalDateTime ZERO_DATE = LocalDateTime.of(1970, Month.JANUARY, 1, 0, 0);
 
     @Autowired
-    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper) {
+    public NewsServiceImpl(NewsRepository newsRepository) {
         this.newsRepository = newsRepository;
-        this.modelMapper = modelMapper;
     }
 
 
+
     @Override
-    public CentralPlateServiceModel getNews() {
+    public List<CentralPlateServiceModel> getFourLastNews() { //TODO: TEST CODE!!!
 
-        News news = this.newsRepository.findAll().get(0);
+        List<CentralPlateServiceModel> news = new ArrayList<>();
 
-        CentralPlateServiceModel model = new CentralPlateServiceModel();
+        this.newsRepository.findAllByDateAfterOrderByDateDesc(PageRequest.of(0, 4), ZERO_DATE)
+                .forEach(n->{
+                    CentralPlateServiceModel model = new CentralPlateServiceModel();
 
-        model.setTitle(news.getTitle()); //TODO: Custom model mapper
-        model.setDate(news.getDate().toString()); //TODO: Custom model mapper
-        model.setCategory(news.getCategory().iterator().next().getType()); //TODO: Custom model mapper
-        model.setAuthor(news.getUser().getFirstName() + " " + news.getUser().getLastName()); //TODO: Custom model mapper
-        model.setImgUrl(news.getImageLink()); //TODO: Custom model mapper
+                    model.setTitle(n.getTitle()); //TODO: Custom model mapper
+                    model.setDate(n.getDate()); //TODO: Custom model mapper
+                    model.setCategory(n.getCategory().getType()); //TODO: Custom model mapper
+                    model.setAuthor(n.getUser().getFirstName() + " " + n.getUser().getLastName()); //TODO: Custom model mapper
+                    model.setImageUrl(n.getImageUrl()); //TODO: Custom model mapper
+                    model.setId(n.getId());
+                    news.add(model);
 
-        return model;
+                });
+
+
+        return news;
     }
 
     @Override
     public List<TrendingNowModel> getTrendingNowNews() {
 
         List<TrendingNowModel> trendingNews = new ArrayList<>();
+        Pageable pageable = PageRequest.of(0, 5);
 
-        this.newsRepository.findNewsByDateIsAfterOrderByViewsDesc(MIDNIGHT).stream().limit(5).forEach(n -> {
+        this.newsRepository.findAllByDateAfterOrderByViewsDesc(MIDNIGHT, pageable).forEach(n -> {
             TrendingNowModel model = new TrendingNowModel();
             model.setId(n.getId());
             model.setTitle(n.getTitle());
@@ -59,4 +74,46 @@ public class NewsServiceImpl implements NewsService {
 
         return trendingNews;
     }
+
+    @Override
+    public NewsModel getNews(String id) {
+
+        News news = this.newsRepository.getNewsById(id);
+
+        NewsModel model = new NewsModel();
+
+        model.setAuthorNames(news.getUser().getFirstName() + " " + news.getUser().getLastName());
+        model.setCategory(news.getCategory().getType());
+        model.setDate(news.getDate());
+        model.setTitle(news.getTitle());
+        model.setTag(news.getTags());
+        model.setText(TextEditor.makeNewsTextForParagraphs(news.getTextNews()));
+        model.setViews(news.getViews());
+        model.setCategory(news.getCategory().getType());
+        model.setImageUrl(news.getImageUrl());
+        model.setId(news.getId());
+
+        return model;
+    }
+
+    @Override
+    public List<SmallPlateCategoryServiceModel> getCategoryNews(Category category) {
+
+        List<SmallPlateCategoryServiceModel> news = new ArrayList<>();
+
+        this.newsRepository.findAllByCategory(category,PageRequest.of(0, 5,Sort.by(Sort.Direction.DESC,"date")))
+                .forEach(n->{
+                    SmallPlateCategoryServiceModel model = new SmallPlateCategoryServiceModel();
+                    model.setCategory(n.getCategory());
+                    model.setDate(n.getDate());
+                    model.setImageUrl(n.getImageUrl());
+                    model.setTitle(n.getTitle());
+                    model.setId(n.getId());
+                    news.add(model);
+                });
+
+        return news;
+    }
+
+
 }

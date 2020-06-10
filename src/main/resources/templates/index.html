@@ -49,7 +49,7 @@
 
         <!-- Logo desktop -->
         <div class="logo">
-            <a href="index.html"><img src="images/icons/logo-01.png" alt="LOGO"></a>
+            <a href="/"><img src="images/icons/logo-01.png" alt="LOGO"></a>
         </div>
 
         <!-- Banner -->
@@ -65,7 +65,7 @@
             <!-- Menu desktop -->
             <nav class="menu-desktop">
 
-                <a class="logo-stick" href="index.html">
+                <a class="logo-stick" href="/">
                     <img src="images/icons/logo-01.png" alt="LOGO">
                 </a>
 
@@ -96,18 +96,17 @@
             <!-- News is view object for central plate -->
 
             <!-- Central plate 1000x840 -->
-            <th:block th:include="~{fragments/plates/central-plate-1000x840 :: putNews(${topNews})}"/>
-
+            <th:block th:include="~{fragments/plates/central-plate-1000x840 :: putNews(${topNews.get(0)})}"/>
             <!-- Central plate 1000x840 -->
 
 
             <!-- Right plate 1000x466 -->
-            <!--            <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${popularNews.get(0)})}"/>-->
+                        <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${topNews.get(1)})}"/>
             <!-- Right plate 1000x466 -->
 
             <!-- Right plate 1000x743 -->
-            <!--            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${popularNews.get(1)})}"/>-->
-            <!--            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${popularNews.get(2)})}"/>-->
+                        <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(2)})}"/>
+                        <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(3)})}"/>
             <!-- Right plate 1000x743 -->
         </div>
     </div>
@@ -134,7 +133,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -163,7 +162,7 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
@@ -192,7 +191,7 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
@@ -221,7 +220,7 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
@@ -250,7 +249,7 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
@@ -285,7 +284,7 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
@@ -313,7 +312,7 @@
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -340,7 +339,7 @@
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -367,7 +366,7 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
@@ -404,7 +403,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -429,7 +428,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -454,7 +453,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -479,7 +478,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -504,7 +503,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-central-plate-720x540"/>
+                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
@@ -730,7 +729,7 @@
             <div class="row">
                 <div class="col-lg-4 p-b-20">
                     <div class="size-h-3 flex-s-c">
-                        <a href="index.html">
+                        <a href="/">
                             <img class="max-s-full" src="images/icons/logo-02.png" alt="LOGO">
                         </a>
                     </div>
@@ -816,11 +815,11 @@
 		</span>
 </div>
 
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendor/animsition/js/animsition.min.js"></script>
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="/vendor/animsition/js/animsition.min.js"></script>
+<script src="/vendor/bootstrap/js/popper.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>

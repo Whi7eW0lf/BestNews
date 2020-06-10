@@ -1,20 +1,29 @@
 package news.web.models;
 
+import java.time.LocalDateTime;
+
 public class CentralPlateView {
-    private String imgUrl;
+    private String id;
+    private String imageUrl;
     private String category;
     private String title;
     private String Author;
-    private String date;
+    private LocalDateTime date;
 
-
-
-    public String getImgUrl() {
-        return imgUrl;
+    public String getId() {
+        return id;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getCategory() {
@@ -41,11 +50,11 @@ public class CentralPlateView {
         Author = author;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
