@@ -101,12 +101,12 @@
 
 
             <!-- Right plate 1000x466 -->
-                        <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${topNews.get(1)})}"/>
+            <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${topNews.get(1)})}"/>
             <!-- Right plate 1000x466 -->
 
             <!-- Right plate 1000x743 -->
-                        <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(2)})}"/>
-                        <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(3)})}"/>
+            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(2)})}"/>
+            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(3)})}"/>
             <!-- Right plate 1000x743 -->
         </div>
     </div>
@@ -133,23 +133,29 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+
+                                        <!--                                        &lt;!&ndash; Small right plate - 720x540 &ndash;&gt;-->
+                                        <!--                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>-->
+                                        <!--                                        &lt;!&ndash; Small right plate - 720x540 &ndash;&gt;-->
+
+                                        <!--                                        &lt;!&ndash; Small right plate - 720x540 &ndash;&gt;-->
+                                        <!--                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>-->
+                                        <!--                                        &lt;!&ndash; Small right plate - 720x540 &ndash;&gt;-->
 
                                     </div>
                                 </div>
@@ -161,26 +167,28 @@
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
-                                        <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
-                                        <!-- Small central plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
+
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
+
+                                        </th:block>
 
                                     </div>
 
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -191,24 +199,22 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
 
                                     </div>
                                 </div>
@@ -220,24 +226,22 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
 
                                 </div>
@@ -249,23 +253,21 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -284,23 +286,21 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -312,22 +312,20 @@
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
 
                                 </div>
@@ -339,22 +337,20 @@
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
 
                                 </div>
@@ -366,23 +362,21 @@
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
 
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -403,22 +397,20 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -428,22 +420,20 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -453,22 +443,20 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -478,22 +466,20 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -503,22 +489,20 @@
                                 <div class="row">
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                         <!-- Small central plate - 720x540 -->
-                                        <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${categoryNews.get(0)})}"/>
+                                        <th:block
+                                                th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews.get(0)})}"/>
                                         <!-- Small central plate - 720x540 -->
                                     </div>
 
                                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        <th:block th:each="news : ${smallCategoryNews}">
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                            <!-- Small right plate - 720x540 -->
+                                            <th:block
+                                                    th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                                            <!-- Small right plate - 720x540 -->
 
-                                        <!-- Small right plate - 720x540 -->
-                                        <th:block th:include="fragments/plates/small-right-plate-720x540.html"/>
-                                        <!-- Small right plate - 720x540 -->
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -538,11 +522,12 @@
 
                         <ul class="p-t-35">
 
-                            <!--                            <th:block th:each="oneNews,id:${}">-->
+                            <th:block th:each="oneNews,id:${trendingNews}">
 
-                            <!--                                <th:block th:include="fragments/plates/most-popular-news :: putNumberAndTitle(${id.index+1},${oneNews.getText()})"/>-->
+                                <th:block
+                                        th:include="fragments/plates/most-popular-news :: putNumberAndTitle(${id.index+1},${oneNews.getTitle()},${oneNews.getId()})"/>
 
-                            <!--                            </th:block>-->
+                            </th:block>
 
                         </ul>
                     </div>

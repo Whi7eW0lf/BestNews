@@ -78,14 +78,14 @@ public class DataInitializer implements CommandLineRunner {
                 &&this.newsRepository.count()<1
                 &&this.tagRepository.count()<1
                 &&this.userRepository.count()<1){
+            this.addCategory();
+
             for (int i = 0; i < 10; i++) {
                 this.user = new User();
                 this.tag = new Tag();
-                this.category = new Category();
                 this.news = new News();
 
                 this.addUser();
-                this.addCategory();
                 this.addTag();
                 this.addNews();
             }

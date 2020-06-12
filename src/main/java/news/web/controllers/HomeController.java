@@ -38,27 +38,24 @@ public class HomeController {
                 .map(n -> this.modelMapper.map(n, TrendingNowModel.class))
                 .collect(Collectors.toList());
 
-        modelAndView.addObject("trendingNews", trendingNews);
 
         List<CentralPlateView> news = this.newsService.getFourLastNews()
                 .stream()
                 .map(n -> this.modelMapper.map(n, CentralPlateView.class))
                 .collect(Collectors.toList());
 
+
+        SmallPlateCategoryView centralCategoryNews = getSmallCategoryNews("944d108e-62f3-4bc1-879e-b95ce3dd55b2", 1).get(0);
+
+        List<SmallPlateCategoryView> smallCategoryNews = getSmallCategoryNews("944d108e-62f3-4bc1-879e-b95ce3dd55b2", 4);
+
+        modelAndView.addObject("trendingNews", trendingNews);
+        modelAndView.addObject("centralCategoryNews", centralCategoryNews);
         modelAndView.addObject("topNews", news);
+        modelAndView.addObject("smallCategoryNews", smallCategoryNews);
 
-        Category category = this.categoryRepository.findById("c302d828-25b9-4b4c-b1c5-b381c706bb98").orElse(null);
-
-        List<SmallPlateCategoryView> categoryNews =
-                this.newsService.getCategoryNews(category)
-                        .stream()
-                        .map(n -> this.modelMapper.map(n, SmallPlateCategoryView.class))
-                        .collect(Collectors.toList());
-
-        modelAndView.addObject("categoryNews",categoryNews);
-
-        System.out.println("User IP: " + request.getRemoteAddr());
         modelAndView.setViewName("index");
+        System.out.println("User IP: " + request.getRemoteAddr());
 
         return modelAndView;
     }
@@ -67,5 +64,15 @@ public class HomeController {
     public ModelAndView getContact(HttpServletRequest request) {
         System.out.println("User IP: " + request.getRemoteAddr());
         return new ModelAndView("contact");
+    }
+
+    private List<SmallPlateCategoryView> getSmallCategoryNews(String categoryId, int count) {
+        Category category = this.categoryRepository.findById(categoryId).orElse(null);
+
+        return this.newsService.getCategoryNews(category, count)
+                .stream()
+                .skip(1)
+                .map(n -> this.modelMapper.map(n, SmallPlateCategoryView.class))
+                .collect(Collectors.toList());
     }
 }

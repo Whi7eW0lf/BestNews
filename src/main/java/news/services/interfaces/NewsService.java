@@ -14,6 +14,6 @@ public interface NewsService {
     List<CentralPlateServiceModel> getFourLastNews();
     List<TrendingNowModel> getTrendingNowNews();
     NewsModel getNews(String id);
-    List<SmallPlateCategoryServiceModel> getCategoryNews(Category category);
+    List<SmallPlateCategoryServiceModel> getCategoryNews(Category category,int count);
 
 }

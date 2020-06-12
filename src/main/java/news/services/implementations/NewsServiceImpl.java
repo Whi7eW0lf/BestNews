@@ -25,8 +25,6 @@ public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
 
-    private static final LocalDateTime NOW = LocalDateTime.now();
-    private static final LocalDateTime MIDNIGHT = NOW.toLocalDate().atStartOfDay();
     private static final LocalDateTime ZERO_DATE = LocalDateTime.of(1970, Month.JANUARY, 1, 0, 0);
 
     @Autowired
@@ -65,7 +63,7 @@ public class NewsServiceImpl implements NewsService {
         List<TrendingNowModel> trendingNews = new ArrayList<>();
         Pageable pageable = PageRequest.of(0, 5);
 
-        this.newsRepository.findAllByDateAfterOrderByViewsDesc(MIDNIGHT, pageable).forEach(n -> {
+        this.newsRepository.getAllNewsOrderByViews(pageable).forEach(n -> {
             TrendingNowModel model = new TrendingNowModel();
             model.setId(n.getId());
             model.setTitle(n.getTitle());
@@ -97,11 +95,11 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<SmallPlateCategoryServiceModel> getCategoryNews(Category category) {
+    public List<SmallPlateCategoryServiceModel> getCategoryNews(Category category, int count) {
 
         List<SmallPlateCategoryServiceModel> news = new ArrayList<>();
 
-        this.newsRepository.findAllByCategory(category,PageRequest.of(0, 5,Sort.by(Sort.Direction.DESC,"date")))
+        this.newsRepository.findAllByCategoryOrderByDateDesc(category,PageRequest.of(0, count,Sort.by(Sort.Direction.DESC,"date")))
                 .forEach(n->{
                     SmallPlateCategoryServiceModel model = new SmallPlateCategoryServiceModel();
                     model.setCategory(n.getCategory());
