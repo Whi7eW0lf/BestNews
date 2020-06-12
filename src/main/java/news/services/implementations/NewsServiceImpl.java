@@ -4,11 +4,9 @@ import news.models.Category;
 import news.models.News;
 import news.repositories.NewsRepository;
 import news.services.interfaces.NewsService;
-import news.services.models.CentralPlateServiceModel;
-import news.services.models.NewsModel;
-import news.services.models.SmallPlateCategoryServiceModel;
-import news.services.models.TrendingNowModel;
+import news.services.models.*;
 import news.util.TextEditor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,12 +22,14 @@ import java.util.List;
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
+    private final ModelMapper modelMapper;
 
     private static final LocalDateTime ZERO_DATE = LocalDateTime.of(1970, Month.JANUARY, 1, 0, 0);
 
     @Autowired
-    public NewsServiceImpl(NewsRepository newsRepository) {
+    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper) {
         this.newsRepository = newsRepository;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -95,11 +95,12 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<SmallPlateCategoryServiceModel> getCategoryNews(Category category, int count) {
+    public List<SmallPlateCategoryServiceModel> getCategoryNews(CategoryServiceModel category, int count) {
 
         List<SmallPlateCategoryServiceModel> news = new ArrayList<>();
+        Category mapped = this.modelMapper.map(category,Category.class);
 
-        this.newsRepository.findAllByCategoryOrderByDateDesc(category,PageRequest.of(0, count,Sort.by(Sort.Direction.DESC,"date")))
+        this.newsRepository.findAllByCategoryOrderByDateDesc(mapped,PageRequest.of(0, count,Sort.by(Sort.Direction.DESC,"date")))
                 .forEach(n->{
                     SmallPlateCategoryServiceModel model = new SmallPlateCategoryServiceModel();
                     model.setCategory(n.getCategory());

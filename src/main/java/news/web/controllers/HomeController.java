@@ -1,8 +1,9 @@
 package news.web.controllers;
 
 import news.models.Category;
-import news.repositories.CategoryRepository;
+import news.services.interfaces.CategoryService;
 import news.services.interfaces.NewsService;
+import news.services.models.CategoryServiceModel;
 import news.services.models.TrendingNowModel;
 import news.web.models.CentralPlateView;
 import news.web.models.SmallPlateCategoryView;
@@ -21,13 +22,13 @@ public class HomeController {
 
     private final ModelMapper modelMapper;
     private final NewsService newsService;
-    private final CategoryRepository categoryRepository;//TODO: !!! TESTING !!!
+    private final CategoryService categoryService;
 
     @Autowired
-    public HomeController(ModelMapper modelMapper, NewsService newsService, CategoryRepository categoryRepository) {
+    public HomeController(ModelMapper modelMapper, NewsService newsService, CategoryService categoryService) {
         this.modelMapper = modelMapper;
         this.newsService = newsService;
-        this.categoryRepository = categoryRepository;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/")
@@ -45,9 +46,9 @@ public class HomeController {
                 .collect(Collectors.toList());
 
 
-        SmallPlateCategoryView centralCategoryNews = getSmallCategoryNews("944d108e-62f3-4bc1-879e-b95ce3dd55b2", 1).get(0);
+        SmallPlateCategoryView centralCategoryNews = getSmallCategoryNews("Weather", 1,0).get(0);
 
-        List<SmallPlateCategoryView> smallCategoryNews = getSmallCategoryNews("944d108e-62f3-4bc1-879e-b95ce3dd55b2", 4);
+        List<SmallPlateCategoryView> smallCategoryNews = getSmallCategoryNews("Weather", 4,1);
 
         modelAndView.addObject("trendingNews", trendingNews);
         modelAndView.addObject("centralCategoryNews", centralCategoryNews);
@@ -66,12 +67,12 @@ public class HomeController {
         return new ModelAndView("contact");
     }
 
-    private List<SmallPlateCategoryView> getSmallCategoryNews(String categoryId, int count) {
-        Category category = this.categoryRepository.findById(categoryId).orElse(null);
+    private List<SmallPlateCategoryView> getSmallCategoryNews(String categoryName, int count,int skip) {
+        CategoryServiceModel category = this.categoryService.getCategoryByType(categoryName);
 
         return this.newsService.getCategoryNews(category, count)
                 .stream()
-                .skip(1)
+                .skip(skip)
                 .map(n -> this.modelMapper.map(n, SmallPlateCategoryView.class))
                 .collect(Collectors.toList());
     }
