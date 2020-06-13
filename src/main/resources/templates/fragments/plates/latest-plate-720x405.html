@@ -1,21 +1,21 @@
-<th:block th:fragment>
+<th:block th:fragment="addNews(news)">
     <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
         <div class="m-b-45">
-            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-                <img src="/images/latest-01.jpg" alt="IMG">
+            <a th:href="@{/news/{id}(id = ${news.id})}" class="wrap-pic-w hov1 trans-03">
+                <img th:src="${news.getImageUrl()}" alt="IMG">
             </a>
 
             <div class="p-t-16">
 
                 <h5 class="p-b-5">
-                    <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">Title</a>
+                    <a th:href="@{/news/{id}(id = ${news.id})}" class="f1-m-3 cl2 hov-cl10 trans-03" th:text="${news.getTitle()}">Title</a>
                 </h5>
 
                 <span class="cl8">
-                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">Author</a>
+                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03" th:text="${news.getAuthorNames()}">Author</a>
                     <span class="f1-s-3 m-rl-3">-</span>
-                    <span class="f1-s-3">Date</span>
+                    <span class="f1-s-3" th:text="${#temporals.format(news.getDate(),'dd MMM, yyyy HH:mm')}">Date</span>
                 </span>
             </div>
         </div>

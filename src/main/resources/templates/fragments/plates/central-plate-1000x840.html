@@ -12,7 +12,7 @@
                 </h3>
 
                 <span class="how1-child2">
-						<span class="f1-s-4 cl11" th:text="${news.getAuthor()}">Author</span>
+						<span class="f1-s-4 cl11" th:text="${news.getAuthorNames()}">Author</span>
 						<span class="f1-s-3 cl11 m-rl-3"> - </span>
 						<span class="f1-s-3 cl11" th:text="${#temporals.format(news.getDate(),'dd MMM, yyyy HH:mm')}">Date</span>
 				</span>

@@ -8,9 +8,10 @@ import java.util.Set;
 
 public interface NewsService {
 
-    List<CentralPlateServiceModel> getFourLastNews();
-    List<TrendingNowModel> getTrendingNowNews();
+    List<NewsModel> getLastNews(int count);
+    List<NewsModel> getTrendingNowNews();
     NewsModel getNews(String id);
+    List<NewsModel> getPopularNews(int count);
     List<SmallPlateCategoryServiceModel> getCategoryNews(CategoryServiceModel category, int count);
 
 }

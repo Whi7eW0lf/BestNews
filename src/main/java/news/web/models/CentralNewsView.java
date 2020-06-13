@@ -1,20 +1,14 @@
-package news.services.models;
+package news.web.models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class CentralPlateServiceModel {
-
+public class CentralNewsView {
     private String id;
     private String imageUrl;
     private String category;
     private String title;
-    private String Author;
+    private String authorNames;
     private LocalDateTime date;
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
 
     public String getId() {
         return id;
@@ -24,11 +18,9 @@ public class CentralPlateServiceModel {
         this.id = id;
     }
 
-    /**
-     * Image must be size 1000x840 for perfect view.
-     */
-
-
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
@@ -50,12 +42,12 @@ public class CentralPlateServiceModel {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return Author;
+    public String getAuthorNames() {
+        return authorNames;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
+    public void setAuthorNames(String authorNames) {
+        this.authorNames = authorNames;
     }
 
     public LocalDateTime getDate() {

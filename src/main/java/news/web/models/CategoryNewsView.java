@@ -4,7 +4,7 @@ import news.models.Category;
 
 import java.time.LocalDateTime;
 
-public class SmallPlateCategoryView {
+public class CategoryNewsView {
 
     private String imageUrl;
     private String title;

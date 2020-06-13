@@ -1,11 +1,10 @@
-<th:block th:fragment>
+<th:block th:fragment="addName(name)">
 
     <div class="tab01-head how2 how2-cl1 bocl12 flex-s-c m-r-10 m-r-0-sr991">
 
-        <h3 class="f1-m-2 cl12 tab01-title">Entertainment</h3>
+        <h3 class="f1-m-2 cl12 tab01-title" th:text="${name}">Tab Name</h3>
 
-        <a href="category-01.html" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
-            View all
+        <a href="{categoryLink}" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03" id="">View all
             <i class="fs-12 m-l-5 fa fa-caret-right"></i>
         </a>
     </div>

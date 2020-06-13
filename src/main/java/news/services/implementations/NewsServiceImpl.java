@@ -35,20 +35,20 @@ public class NewsServiceImpl implements NewsService {
 
 
     @Override
-    public List<CentralPlateServiceModel> getFourLastNews() { //TODO: TEST CODE!!!
+    public List<NewsModel> getLastNews(int count) { //TODO: TEST CODE!!!
 
-        List<CentralPlateServiceModel> news = new ArrayList<>();
+        List<NewsModel> news = new ArrayList<>();
 
-        this.newsRepository.findAllByDateAfterOrderByDateDesc(PageRequest.of(0, 4), ZERO_DATE)
+        this.newsRepository.findAllByDateAfterOrderByDateDesc(PageRequest.of(0, count), ZERO_DATE)
                 .forEach(n->{
-                    CentralPlateServiceModel model = new CentralPlateServiceModel();
+                    NewsModel model = new NewsModel();
 
                     model.setTitle(n.getTitle()); //TODO: Custom model mapper
                     model.setDate(n.getDate()); //TODO: Custom model mapper
                     model.setCategory(n.getCategory().getType()); //TODO: Custom model mapper
-                    model.setAuthor(n.getUser().getFirstName() + " " + n.getUser().getLastName()); //TODO: Custom model mapper
                     model.setImageUrl(n.getImageUrl()); //TODO: Custom model mapper
                     model.setId(n.getId());
+                    model.setAuthorNames(n.getUser().getFirstName() + " " + n.getUser().getLastName());
                     news.add(model);
 
                 });
@@ -58,13 +58,13 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<TrendingNowModel> getTrendingNowNews() {
+    public List<NewsModel> getTrendingNowNews() {
 
-        List<TrendingNowModel> trendingNews = new ArrayList<>();
+        List<NewsModel> trendingNews = new ArrayList<>();
         Pageable pageable = PageRequest.of(0, 5);
 
         this.newsRepository.getAllNewsOrderByViews(pageable).forEach(n -> {
-            TrendingNowModel model = new TrendingNowModel();
+            NewsModel model = new NewsModel();
             model.setId(n.getId());
             model.setTitle(n.getTitle());
             trendingNews.add(model);
@@ -92,6 +92,23 @@ public class NewsServiceImpl implements NewsService {
         model.setId(news.getId());
 
         return model;
+    }
+
+    @Override
+    public List<NewsModel> getPopularNews(int count) {
+
+        List<NewsModel> popularNews = new ArrayList<>();
+
+         this.newsRepository.getAllNewsOrderByViews(PageRequest.of(0, count))
+                 .forEach(n->{
+                     NewsModel model = new NewsModel();
+                     model.setTitle(n.getTitle());
+                     model.setDate(n.getDate());
+                     model.setImageUrl(n.getImageUrl());
+                     model.setId(n.getId());
+                     popularNews.add(model);
+                 });
+        return popularNews;
     }
 
     @Override

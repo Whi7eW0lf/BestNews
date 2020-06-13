@@ -130,7 +130,7 @@
                             <div class="flex-wr-s-s size-w-0">
 
                                 <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15" th:each="tag : ${news.getTag()}">
-                                <th:block th:text="${tag.getTag()}"/>
+                                    <th:block th:text="${tag.getTag()}"/>
                                 </a>
 
                             </div>
@@ -229,11 +229,11 @@
                         </div>
 
                         <ul class="p-t-35">
-
-                            <th:block th:include="fragments/plates/popular-post-100x75"/>
-                            <th:block th:include="fragments/plates/popular-post-100x75"/>
-                            <th:block th:include="fragments/plates/popular-post-100x75"/>
-
+                            <th:block th:each="news:${popularNews}">
+                                <!--Popular post plate 80x60 image-->
+                                <th:block th:include="~{fragments/plates/popular-post-plate-80x60 :: addNews(${news})}"/>
+                                <!--Popular post plate 80x60 image-->
+                            </th:block>
                         </ul>
                     </div>
 
@@ -283,27 +283,20 @@
                 </div>
 
                 <div class="col-sm-6 col-lg-4 p-b-20">
+                    <ul>
+                        <th:block th:each="news:${popularNews}">
+                            <!--Popular post plate 80x60 image-->
+                            <th:block th:include="~{fragments/plates/popular-post-plate-80x60 :: addNews(${news})}"/>
+                            <!--Popular post plate 80x60 image-->
+                        </th:block>
+
+                    </ul>
+
                     <div class="size-h-3 flex-s-c">
                         <h5 class="f1-m-7 cl0">
                             Popular Posts
                         </h5>
                     </div>
-
-                    <ul>
-
-                        <!--Popular post plate 80x60 image-->
-                        <th:block th:include="fragments/plates/popular-post-plate-80x60"/>
-                        <!--Popular post plate 80x60 image-->
-
-                        <!--Popular post plate 80x60 image-->
-                        <th:block th:include="fragments/plates/popular-post-plate-80x60"/>
-                        <!--Popular post plate 80x60 image-->
-
-                        <!--Popular post plate 80x60 image-->
-                        <th:block th:include="fragments/plates/popular-post-plate-80x60"/>
-                        <!--Popular post plate 80x60 image-->
-
-                    </ul>
                 </div>
 
                 <div class="col-sm-6 col-lg-4 p-b-20">

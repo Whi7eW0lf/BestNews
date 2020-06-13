@@ -1,12 +1,9 @@
 package news.web.controllers;
 
-import news.models.Category;
 import news.services.interfaces.CategoryService;
 import news.services.interfaces.NewsService;
 import news.services.models.CategoryServiceModel;
-import news.services.models.TrendingNowModel;
-import news.web.models.CentralPlateView;
-import news.web.models.SmallPlateCategoryView;
+import news.web.models.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,22 +32,36 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView getIndex(HttpServletRequest request, ModelAndView modelAndView) {
 
-        List<TrendingNowModel> trendingNews = this.newsService.getTrendingNowNews()
+        List<TrendingNowView> trendingNews = this.newsService.getTrendingNowNews()
                 .stream()
-                .map(n -> this.modelMapper.map(n, TrendingNowModel.class))
+                .map(n -> this.modelMapper.map(n, TrendingNowView.class))
                 .collect(Collectors.toList());
 
 
-        List<CentralPlateView> news = this.newsService.getFourLastNews()
+        List<CentralNewsView> news = this.newsService.getLastNews(4)
                 .stream()
-                .map(n -> this.modelMapper.map(n, CentralPlateView.class))
+                .map(n -> this.modelMapper.map(n, CentralNewsView.class))
                 .collect(Collectors.toList());
 
 
-        SmallPlateCategoryView centralCategoryNews = getSmallCategoryNews("Weather", 1,0).get(0);
+        CategoryNewsView centralCategoryNews = getSmallCategoryNews("Weather", 1,0).get(0);
 
-        List<SmallPlateCategoryView> smallCategoryNews = getSmallCategoryNews("Weather", 4,1);
+        List<CategoryNewsView> smallCategoryNews = getSmallCategoryNews("Weather", 4,1);
 
+        List<LatestArticlesView> latestArticles = this.newsService.getLastNews(6)
+                .stream()
+                .map(n->this.modelMapper.map(n,LatestArticlesView.class))
+                .collect(Collectors.toList());
+
+        List<PopularNewsView> popularNews = this.newsService.getPopularNews(3)
+                .stream()
+                .map(n->this.modelMapper.map(n,PopularNewsView.class))
+                .collect(Collectors.toList());
+
+        modelAndView.addObject("popularNews",popularNews);
+        modelAndView.addObject("popularNews2",popularNews);
+
+        modelAndView.addObject("latestArticles",latestArticles);
         modelAndView.addObject("trendingNews", trendingNews);
         modelAndView.addObject("centralCategoryNews", centralCategoryNews);
         modelAndView.addObject("topNews", news);
@@ -67,13 +79,13 @@ public class HomeController {
         return new ModelAndView("contact");
     }
 
-    private List<SmallPlateCategoryView> getSmallCategoryNews(String categoryName, int count,int skip) {
+    private List<CategoryNewsView> getSmallCategoryNews(String categoryName, int count, int skip) {
         CategoryServiceModel category = this.categoryService.getCategoryByType(categoryName);
 
         return this.newsService.getCategoryNews(category, count)
                 .stream()
                 .skip(skip)
-                .map(n -> this.modelMapper.map(n, SmallPlateCategoryView.class))
+                .map(n -> this.modelMapper.map(n, CategoryNewsView.class))
                 .collect(Collectors.toList());
     }
 }

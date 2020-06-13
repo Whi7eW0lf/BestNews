@@ -1,0 +1,30 @@
+<th:block th:fragment="recousers(name, centralCategoryNews,smallCategoryNews)">
+
+    <th:block th:include="~{fragments/navbars/news-small-navbar-1 :: addName(${name})}"/>
+
+    <div class="tab-content p-t-35">
+
+        <div class="tab-pane fade show active" id="tab1-1" role="tabpanel">
+            <div class="row">
+                <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                    <!-- Small central plate - 720x540 -->
+                    <th:block th:include="~{fragments/plates/small-central-plate-720x540 ::addCentralNews(${centralCategoryNews})}"/>
+                    <!-- Small central plate - 720x540 -->
+                </div>
+
+                <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                    <th:block th:each="news : ${smallCategoryNews}">
+
+                        <!-- Small right plate - 720x540 -->
+                        <th:block
+                                th:include="~{fragments/plates/small-right-plate-720x540.html :: addNews(${news})}"/>
+                        <!-- Small right plate - 720x540 -->
+
+                    </th:block>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>

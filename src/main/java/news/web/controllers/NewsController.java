@@ -2,7 +2,8 @@ package news.web.controllers;
 
 import news.services.interfaces.NewsService;
 import news.services.models.NewsModel;
-import news.services.models.TrendingNowModel;
+import news.web.models.PopularNewsView;
+import news.web.models.TrendingNowView;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,17 +33,24 @@ public class NewsController {
     @GetMapping("/{newsId}")
     public ModelAndView getSelectedNewsNews(HttpServletRequest request, ModelAndView modelAndView, @PathVariable String newsId) {
 
-        List<TrendingNowModel> trendingNews = this.newsService.getTrendingNowNews()
+        List<TrendingNowView> trendingNews = this.newsService.getTrendingNowNews()
                 .stream()
-                .map(n -> this.modelMapper.map(n, TrendingNowModel.class))
+                .map(n -> this.modelMapper.map(n, TrendingNowView.class))
                 .collect(Collectors.toList());
 
         modelAndView.addObject("trendingNews", trendingNews);
 
         NewsModel news = this.modelMapper.map(this.newsService.getNews(newsId), NewsModel.class);
 
+        List<PopularNewsView> popularNews = this.newsService.getPopularNews(3)
+                .stream()
+                .map(n->this.modelMapper.map(n,PopularNewsView.class))
+                .collect(Collectors.toList());
+
+        modelAndView.addObject("popularNews",popularNews);
         modelAndView.addObject("news", news);
         modelAndView.setViewName("news");
+
         System.out.println("User IP: " + request.getRemoteAddr());
 
         return modelAndView;
