@@ -96,17 +96,27 @@
             <!-- News is view object for central plate -->
 
             <!-- Central plate 1000x840 -->
-            <th:block th:include="~{fragments/plates/central-plate-1000x840 :: putNews(${topNews.get(0)})}"/>
+            <th:block th:if="${topNews.size()>0}">
+                <th:block th:include="~{fragments/plates/central-plate-1000x840 :: putNews(${topNews.get(0)})}"/>
+            </th:block>
             <!-- Central plate 1000x840 -->
 
 
             <!-- Right plate 1000x466 -->
-            <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${topNews.get(1)})}"/>
+            <th:block th:if="${topNews.size()>1}">
+                <th:block th:include="~{fragments/plates/right-plate-1000x466 ::putNews(${topNews.get(1)})}"/>
+            </th:block>
             <!-- Right plate 1000x466 -->
 
             <!-- Right plate 1000x743 -->
-            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(2)})}"/>
-            <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(3)})}"/>
+            <th:block th:if="${topNews.size()>2}">
+                <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(2)})}"/>
+            </th:block>
+
+            <th:block th:if="${topNews.size()>3}">
+                <th:block th:include="~{fragments/plates/right-plate-1000x743 ::putNews(${topNews.get(3)})}"/>
+            </th:block>
+
             <!-- Right plate 1000x743 -->
         </div>
     </div>
@@ -123,8 +133,8 @@
                     <div class="tab01 p-b-20">
 
                         <!-- Tab panes -->
-                        <th:block
-                                th:include="~{fragments/posts/post :: recousers(${'Entertainment'},${centralCategoryNews},${smallCategoryNews})}"/>
+<!--                        <th:block-->
+<!--                                th:include="~{fragments/posts/post :: recousers(${'Entertainment'},${centralCategoryNews},${smallCategoryNews})}"/>-->
                         <!-- Tab panes -->
 
                     </div>
@@ -132,16 +142,16 @@
                     <!-- Business -->
                     <div class="tab01 p-b-20">
                         <!-- Tab panes -->
-                        <th:block
-                                th:include="~{fragments/posts/post :: recousers(${'Business'},${centralCategoryNews},${smallCategoryNews})}"/>
+<!--                        <th:block-->
+<!--                                th:include="~{fragments/posts/post :: recousers(${'Business'},${centralCategoryNews},${smallCategoryNews})}"/>-->
                         <!-- Tab panes -->
                     </div>
 
                     <!-- Travel -->
                     <div class="tab01 p-b-20">
                         <!-- Tab panes -->
-                        <th:block
-                                th:include="~{fragments/posts/post :: recousers(${'Travel'},${centralCategoryNews},${smallCategoryNews})}"/>
+<!--                        <th:block-->
+<!--                                th:include="~{fragments/posts/post :: recousers(${'Travel'},${centralCategoryNews},${smallCategoryNews})}"/>-->
                         <!-- Tab panes -->
                     </div>
                 </div>

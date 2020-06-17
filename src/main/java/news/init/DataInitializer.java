@@ -1,10 +1,15 @@
 package news.init;
 
-import news.models.*;
-import news.repositories.CategoryRepository;
-import news.repositories.NewsRepository;
-import news.repositories.TagRepository;
-import news.repositories.UserRepository;
+import news.models.dtos.CategoryDto;
+import news.models.dtos.TagDto;
+import news.services.interfaces.CategoryService;
+import news.services.interfaces.NewsService;
+import news.services.interfaces.TagService;
+import news.services.interfaces.UserService;
+import news.services.models.CategoryServiceModel;
+import news.services.models.TagServiceModel;
+import news.util.json.JsonParser;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

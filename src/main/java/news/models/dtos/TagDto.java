@@ -1,10 +1,10 @@
-package news.models;
+package news.models.dtos;
 
-import javax.persistence.*;
+import com.google.gson.annotations.Expose;
 
-@Table(name = "tags")
-@Entity
-public class Tag extends BaseEntity{
+public class TagDto {
+
+    @Expose
     private String tag;
 
     public String getTag() {

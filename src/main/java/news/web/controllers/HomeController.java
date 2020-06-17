@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,9 +43,9 @@ public class HomeController {
                 .collect(Collectors.toList());
 
 
-        CategoryNewsView centralCategoryNews = getSmallCategoryNews("Weather", 1,0).get(0);
+//        CategoryNewsView centralCategoryNews = getSmallCategoryNews("Weather", 1,0).get(0);
 
-        List<CategoryNewsView> smallCategoryNews = getSmallCategoryNews("Weather", 4,1);
+//        List<CategoryNewsView> smallCategoryNews = getSmallCategoryNews("Weather", 4,1);
 
         List<LatestArticlesView> latestArticles = this.newsService.getLastNews(6)
                 .stream()
@@ -63,11 +62,12 @@ public class HomeController {
 
         modelAndView.addObject("latestArticles",latestArticles);
         modelAndView.addObject("trendingNews", trendingNews);
-        modelAndView.addObject("centralCategoryNews", centralCategoryNews);
+//        modelAndView.addObject("centralCategoryNews", centralCategoryNews);
         modelAndView.addObject("topNews", news);
-        modelAndView.addObject("smallCategoryNews", smallCategoryNews);
+//        modelAndView.addObject("smallCategoryNews", smallCategoryNews);
 
         modelAndView.setViewName("index");
+
         System.out.println("User IP: " + request.getRemoteAddr());
 
         return modelAndView;
